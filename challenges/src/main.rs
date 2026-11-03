@@ -1,11 +1,10 @@
 pub const MAX: u32 = u32::MAX;
 pub const MIN: i32 = i32::MIN;
 
-
 fn main() {
     // task_01
     let score: u8 = 100;
-    let score= score as char;
+    let score = score as char;
     let score: String = score.to_string();
     let score: &str = score.as_str();
     println!("{}", score);
@@ -33,7 +32,7 @@ fn main() {
     let big_val = val as u32;
     let res = u32::checked_add(big_val, 100).unwrap();
     assert_eq!(res, 300);
-    
+
     let res_overflow = u8::checked_add(u8::MAX, 1).unwrap_or(0);
     assert_eq!(res_overflow, 0);
 
