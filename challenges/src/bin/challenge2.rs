@@ -1,3 +1,4 @@
+#[allow(unused)]
 use std::{
     any::{self, type_name_of_val},
     char::from_u32,
@@ -11,6 +12,7 @@ fn how_many_bytes<T>(_val: T) -> usize {
     size_of
 }
 
+#[allow(dead_code)]
 fn add_points(score: u8, bonus: u8) -> u8 {
     score + bonus
 }
@@ -93,4 +95,8 @@ fn main() {
     let y = -1;
     let y = y as u8;
     assert_eq!(y, 255); // -1 mod 256
+    
+    // Rust Integer Overflow
+    let score: u8 = 250;
+    println!("{}", score.wrapping_add(10)); // 
 }

@@ -7,16 +7,16 @@ fn main() {
     let (mut x, y) = (2, 3);
     x += 1;
     assert_eq!(x, 3);
-    
+
     let (x, y);
-    (x,..) = (1, 2);
-    [..,y] = [3, 4];
+    (x, ..) = (1, 2);
+    [.., y] = [3, 4];
     assert_eq!([x, y], [1, 4]);
 
     let size_of_us = std::mem::size_of::<usize>();
     let size_of_is = std::mem::size_of::<isize>();
-    println!("the size of usize in bits is {}", size_of_us*8);
-    println!("the size of isize in bits is {}", size_of_is*8);
+    println!("the size of usize in bits is {}", size_of_us * 8);
+    println!("the size of isize in bits is {}", size_of_is * 8);
 
     let x: u16 = 32_u8 as u16;
     assert_eq!("u16", type_name_of_val(&x));
@@ -30,10 +30,11 @@ fn main() {
     assert!(0.1_f32 + 0.2_f32 == 0.3_f32);
 
     let mut sum: i32 = 0;
-    for i in -3..2 { // the end point of the range is excluded 
+    for i in -3..2 {
+        // the end point of the range is excluded
         sum += i
     }
-    assert!(sum==-5);
+    assert!(sum == -5);
     for c in 'a'..='z' {
         print!("{} ", c as u8);
     }
