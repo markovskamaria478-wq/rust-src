@@ -95,8 +95,4 @@ fn main() {
     let y = -1;
     let y = y as u8;
     assert_eq!(y, 255); // -1 mod 256
-    
-    // Rust Integer Overflow
-    let score: u8 = 250;
-    println!("{}", score.wrapping_add(10)); // 
 }
