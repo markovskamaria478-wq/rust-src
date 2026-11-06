@@ -1,3 +1,5 @@
+use rust_decimal::prelude::*;
+
 #[allow(unused)]
 use std::{
     any::{self, type_name_of_val},
@@ -15,6 +17,22 @@ fn how_many_bytes<T>(_val: T) -> usize {
 #[allow(dead_code)]
 fn add_points(score: u8, bonus: u8) -> u8 {
     score + bonus
+}
+
+fn convert_to_u16(x: i32) -> Option<u16> {
+    let x = u16::try_from(x);
+    match x {
+        Ok(valid) => Some(valid),
+        Err(_) => None,
+    }
+}
+
+fn safe_sum(arr: &[u8; 5]) -> Option<u8> {
+    let mut result: u8 = 0;
+    for &j in &arr[..] {
+        result = u8::checked_add(result, j)?;
+    }
+    Some(result)
 }
 
 fn main() {
@@ -92,7 +110,54 @@ fn main() {
     let x = 256;
     let x = x as u8;
     assert_eq!(x, 0); // 256 mod 256
-    let y = -1;
+    let y: i32 = -1;
     let y = y as u8;
     assert_eq!(y, 255); // -1 mod 256
+
+    // task_08
+    println!("{:?}", convert_to_u16(-1));
+
+    // task_09
+    let arr: [u8; 5] = [10, 20, 30, 40, 250];
+    println!("{:?}", safe_sum(&arr));
+
+    // task_10
+    let (a, b) = (250u8, 10u8);
+    let (saturating_val, wrapping_val) = (u8::saturating_add(a, b), u8::wrapping_add(a, b));
+    assert_eq!(saturating_val, 255);
+    assert_eq!(wrapping_val, 4);
+
+    // task_11
+    let a = Decimal::from_str("0.1").unwrap();
+    let b = Decimal::from_str("0.2").unwrap();
+    assert_eq!(a + b, Decimal::new(3, 1));
+
+    // task_12
+    let mut x: i32 = 0;
+    for i in -3..2 {
+        x += i;
+    }
+    assert_eq!(x, -5);
+
+    // task_13
+    x = 0;
+    for i in 1..=100 {
+        x += i;
+    }
+    assert_eq!(x, 5050);
+
+    // task_14
+    let (a, b) = (b'a', b'e');
+    let mut str: String = "".to_string();
+    for i in a..=b {
+        str.push_str(&(i as char).to_string());
+    }
+    println!("{str}");
+
+    // task_15
+    let mut vec = Vec::new();
+    for i in 'a'..'z' {
+        vec.push(i as u8);
+    }
+    println!("{:?}", vec);
 }

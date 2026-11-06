@@ -25,7 +25,7 @@ fn main() {
     println!("after charging: {level}%");
     level = drain(level, 130);
     println!("after a long day: {level}%");
-    
+
     for n in [5, 20, 21] {
         match factorial(n) {
             Some(small) => println!("{n}! = {small}"),

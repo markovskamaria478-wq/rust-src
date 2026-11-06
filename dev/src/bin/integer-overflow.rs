@@ -3,7 +3,7 @@ checked_, saturating_, wrapped_, overflowing_, T::try_from,
 std::num::{Wrapping, Saturating}
 */
 
-use std::num::{Wrapping, Saturating};
+use std::num::{Saturating, Wrapping};
 
 fn withdraw(balance: u64, amount: u64) -> Option<u64> {
     u64::checked_sub(balance, amount)
@@ -39,7 +39,7 @@ fn main() {
         Err(e) => println!("300 doesn't fit in a u8: {e}"),
     }
 
-    let mut a= Wrapping(255u8);
+    let mut a = Wrapping(255u8);
     a += 1;
     println!("a is equal to {a}");
     let mut b = Saturating(100u8);

@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+rust_decimal = "1.43.0"
 
 # [profile.release]
 # overflow-checks = true
