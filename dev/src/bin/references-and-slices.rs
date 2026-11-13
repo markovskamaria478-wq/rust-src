@@ -2,7 +2,7 @@ fn first_word(text: &str) -> &str {
     for (i, c) in text.chars().enumerate() {
         if " ".contains(c) {
             return &text[..i]; // ptr + len; string literals = immutable string references = string slices
-            // &String ptr
+            // &String ptr -> (String) ptr + len + capacity
             // String ptr + len + capacity
         }
     }
