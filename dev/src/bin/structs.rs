@@ -24,7 +24,6 @@ fn main() {
         "someone@example.com".to_owned(),
         "someusername123".to_owned(),
     );
-    
     let _user2 = User {
         email: "user2email@example.com".to_owned(),
         ..user1
