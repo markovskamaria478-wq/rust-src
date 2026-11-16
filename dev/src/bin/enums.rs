@@ -117,6 +117,8 @@ fn main() {
         println!("The maximum is configured to be {max}");
     }
 
+    println!("config_max: {config_max:?}");
+
     let mut count = 0u32;
     if let Coin::Quarter(state) = &coin {
         println!("State quater from {state:?}")
