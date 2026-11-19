@@ -177,7 +177,9 @@ fn main() -> ExitCode {
     loop {
         if let Ok(_) = std::io::stdin().read_line(&mut power_choice) {
             if power_choice.contains('\0') {
-                println!("Invalid input: Text cannot contain null characters. Please enter 'y' or 'n'.");
+                println!(
+                    "Invalid input: Text cannot contain null characters. Please enter 'y' or 'n'."
+                );
                 power_choice.clear();
             }
             power_choice = power_choice.trim().to_lowercase();
